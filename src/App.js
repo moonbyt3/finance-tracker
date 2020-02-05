@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import './scss/main.scss';
+
 import About from './components/About/About';
 import Tracker from './components/Tracker/Tracker';
 
-import './scss/main.scss';
 
 function App() {
 	return (
@@ -15,10 +17,10 @@ function App() {
 					<Link to="/about" className="navigation__link">About</Link>
 				</nav>
 			</div>
-		<Switch>
-			<Route exact path="/" component={Tracker}></Route>
-			<Route path="/about" component={About}></Route>
-		</Switch>
+			<Switch>
+				<Route exact path="/" component={Tracker}></Route>
+				<Route path="/about" component={About}></Route>
+			</Switch>
 		</Router>
 		</div>
 		);

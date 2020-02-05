@@ -1,0 +1,12 @@
+.btn-delete {
+    background-color: $red;
+    color: $white;
+    border: 1px solid $white;
+    transition: $dur $ease;
+    &:hover {
+        cursor: pointer;
+        background-color: $white;
+        color: $red;
+        border: 1px solid $black;
+    }
+}
