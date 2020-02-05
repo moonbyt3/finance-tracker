@@ -11,13 +11,17 @@ export default function Tracker() {
     const [income, setIncome] = useState(0);
     const handleBalance = (value) => {
         setBalance(Number(balance) + Number(value));
+        
+    }
+    const handleIncome = (value) => {
+        setIncome(value);
     }
     return (
         <div className="container">
             <div className="tracker">
                 <TrackerDisplay balance={balance} income={income}/>
                 <TrackerHistory />
-                <TrackerAddTransaction balance={balance} customProp={handleBalance}/>
+                <TrackerAddTransaction balance={balance} handleBalance={handleBalance} handleIncome={handleIncome} />
             </div>
         </div>
     )

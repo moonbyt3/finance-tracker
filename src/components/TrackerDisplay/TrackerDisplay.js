@@ -12,7 +12,7 @@ export default function TrackerDisplay(props) {
             <div className="tracker__display">
                 <div className="tracker__display-item">
                     <span className="tracker__display-item-title">Income <span className="tooltip" title="Last entry: 31.10.2020"><span>?</span></span></span>
-                    <p id="money-plus" className="money plus">${props.balance}</p>
+                    <p id="money-plus" className="money plus">${props.income}</p>
                 </div>
                 <div className="tracker__display-item">
                     <span className="tracker__display-item-title">Expense</span>
