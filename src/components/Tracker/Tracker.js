@@ -7,21 +7,18 @@ import TrackerHistory from '../TrackerHistory/TrackerHistory';
 import TrackerAddTransaction from '../TrackerAddTransaction/TrackerAddTransaction';
 
 export default function Tracker() {
-    const [balance, setBalance] = useState(0);
     const [income, setIncome] = useState(0);
-    const handleBalance = (value) => {
-        setBalance(Number(balance) + Number(value));
-        
-    }
+    const [incomeDate, setIncomeDate] = useState('');
     const handleIncome = (value) => {
-        setIncome(value);
+        setIncome(Number(income) + Number(value));
+        setIncomeDate(new Date().toLocaleDateString())
     }
     return (
         <div className="container">
             <div className="tracker">
-                <TrackerDisplay balance={balance} income={income}/>
+                <TrackerDisplay income={income} incomeDate={incomeDate}/>
                 <TrackerHistory />
-                <TrackerAddTransaction balance={balance} handleBalance={handleBalance} handleIncome={handleIncome} />
+                <TrackerAddTransaction income={income} handleIncome={handleIncome}  />
             </div>
         </div>
     )

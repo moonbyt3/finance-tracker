@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function TrackerDisplay(props) {
    
@@ -6,12 +6,12 @@ export default function TrackerDisplay(props) {
         <div className="tracker-display">
             <div className="tracker__display-title">
                 <h4>Your Balance</h4>
-                <h1 id="balance">${props.balance}</h1>
+                <h1 id="balance">${props.balance ? props.balance : '0'}</h1>
             </div>
 
             <div className="tracker__display">
                 <div className="tracker__display-item">
-                    <span className="tracker__display-item-title">Income <span className="tooltip" title="Last entry: 31.10.2020"><span>?</span></span></span>
+                    <span className="tracker__display-item-title">Income <span className="tooltip" title={'Last entry: ' + props.incomeDate}><span>?</span></span></span>
                     <p id="money-plus" className="money plus">${props.income}</p>
                 </div>
                 <div className="tracker__display-item">

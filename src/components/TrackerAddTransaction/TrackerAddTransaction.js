@@ -23,9 +23,7 @@ export default function TrackerAddTransaction(props) {
     function handleTransaction(e) {
         e.preventDefault();
         if (transactionType === 'income' ) {
-            props.handleBalance(addTransactionAmmount);
-            props.handleIncome($('#incomeAmmount').val());
-            
+            props.handleIncome(addTransactionAmmount);
         } else {
             console.log('update history, deduct from balance!');
         }
