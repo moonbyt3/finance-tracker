@@ -11,10 +11,12 @@ function App() {
 		<div className="container-fluid">
 			<Router>
 				<div className="row">
-					<nav className="navigation">
-						<Link to="/" className="navigation__link">Home</Link>
-						<Link to="/about" className="navigation__link">About</Link>
-					</nav>
+					<div className="header">
+						<nav className="navigation">
+							<Link to="/" className="navigation__link">Home</Link>
+							<Link to="/about" className="navigation__link">About</Link>
+						</nav>
+					</div>
 				</div>
 				<Switch>
 					<Route exact path="/" component={Tracker}></Route>

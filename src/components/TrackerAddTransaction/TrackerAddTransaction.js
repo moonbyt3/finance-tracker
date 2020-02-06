@@ -3,9 +3,10 @@ import $ from 'jquery';
 import Select from 'react-select';
 
 export default function TrackerAddTransaction(props) {
-    const [addTransactionAmmount, setAddTransactionAmmount] = useState(0);
+    const [addTransactionAmount, setAddTransactionAmount] = useState(0);
     const [transactionType, setTransactionType] = useState('');
-    // const [balance, setBalance] = useState(props.balance);
+    const [expense, setExpense] = useState('');
+    const [expenseAmount, setExpenseAmount] = useState(0);
     
     const options = [
         { value: 'expense', label: 'Add Expense' },
@@ -23,14 +24,22 @@ export default function TrackerAddTransaction(props) {
     function handleTransaction(e) {
         e.preventDefault();
         if (transactionType === 'income' ) {
-            props.handleIncome(addTransactionAmmount);
+            props.handleIncome(addTransactionAmount);
         } else {
-            console.log('update history, deduct from balance!');
+            props.handleDisplayExpense(expenseAmount);
+            props.handleHistoryExpense(expense, expenseAmount);
         }
     }
-    function handleTransactionAmmount(e) {
-        setAddTransactionAmmount(e.target.value);
+    function bindTransactionAmountToState(e) {
+        setAddTransactionAmount(e.target.value);
     }
+    function bindExpenseTextToState(e) {
+        setExpense(e.target.value);
+    }
+    function bindExpenseAmountToState(e) {
+        setExpenseAmount(e.target.value);
+    }
+
     return (
         <div className="tracker-add-trans">
             <h3>Add new transaction</h3>
@@ -42,13 +51,31 @@ export default function TrackerAddTransaction(props) {
                 />
                 <div className="form-control tracker-add-trans__form-item" data-transaction-view="expense">
                     <span>Text</span>
-                    <input type="text" id="text" placeholder="Enter text..." />
+                    <input 
+                        type="text"
+                        id="text"
+                        defaultValue={expense}
+                        onChange={bindExpenseTextToState}
+                        placeholder="Enter text..."
+                    />
                     <span>Amount</span>
-                    <input type="ammount" id="expenseAmmount" placeholder="Enter ammount..." />
+                    <input 
+                        type="number"
+                        id="expenseAmount"
+                        defaultValue={expenseAmount}
+                        onChange={bindExpenseAmountToState}
+                        placeholder="Enter Amount..."
+                    />
                 </div>
                 <div className="form-control tracker-add-trans__form-item" data-transaction-view="income">
                     <span>Amount</span>
-                    <input type="number" id="incomeAmmount" defaultValue={addTransactionAmmount} onChange={handleTransactionAmmount} placeholder="Enter amount..." />
+                    <input 
+                        type="number" 
+                        id="incomeAmount" 
+                        defaultValue={addTransactionAmount} 
+                        onChange={bindTransactionAmountToState} 
+                        placeholder="Enter amount..." 
+                    />
                 </div>
                 <button className="btn" onClick={handleTransaction}>Add transaction</button>
             </form>
