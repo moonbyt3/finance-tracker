@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './tracker.scss';
 
@@ -10,7 +10,12 @@ export default function Tracker() {
     const [income, setIncome] = useState(0);
     const [incomeDate, setIncomeDate] = useState('');
     const [expense, setExpense] = useState([]);
-
+    const [balance, setBalance] = useState(0);
+    useEffect(() => {
+        if (expense[0] != undefined) {
+            setBalance(Number(income) - Number(expense[0][1]));
+        }
+    }, [expense, income])
     const handleIncome = (value) => {
         setIncome(Number(income) + Number(value));
         setIncomeDate(new Date().toLocaleDateString());
@@ -34,6 +39,7 @@ export default function Tracker() {
     return (
         <div className="tracker">
             <TrackerDisplay 
+                balance={balance}
                 income={income}
                 incomeDate={incomeDate}
                 expenseAmount={calculateExpenseAmount()}
