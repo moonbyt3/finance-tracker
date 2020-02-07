@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
+import Swal from 'sweetalert2'
 import Select from 'react-select';
 
 export default function TrackerAddTransaction(props) {
@@ -33,10 +34,33 @@ export default function TrackerAddTransaction(props) {
 
     function handleTransaction(e) {
         e.preventDefault();
-        if (transactionType === 'income') {
-            props.handleIncome(form.incomeAmount);
-        } else {
-            props.handleExpense(form.expense, form.expenseAmount);
+        const { incomeAmount, expense, expenseAmount } = form;
+        switch (transactionType) {
+            case 'income' :
+                incomeAmount !== 0 ? 
+                    props.handleIncome(incomeAmount) 
+                : Swal.fire({
+                    title: 'Error!',
+                    text: 'Ammount can\'t be 0',
+                    icon: 'error',
+                });
+                break;
+            case 'amount' :
+                expense !== '' && expenseAmount !== 0 ? 
+                props.handleExpense(expense, expenseAmount)
+                : Swal.fire({
+                    title: 'Error!',
+                    text: 'Please fill all fields',
+                    icon: 'error',
+                });
+                break;
+            default: 
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please fill all fields',
+                    icon: 'error',
+                });
+                break;
         }
     }
 
