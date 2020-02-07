@@ -9,7 +9,7 @@ import Tracker from './components/Tracker/Tracker';
 function App() {
 	return (
 		<div className="container-fluid">
-			<Router basename="/finance-tracker">
+			<Router basename="finance-tracker">
 				<div className="row">
 					<div className="header">
 						<nav className="navigation">
