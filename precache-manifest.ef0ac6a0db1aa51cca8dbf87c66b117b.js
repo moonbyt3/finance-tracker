@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "24b457913b37dec5006954552366fde6",
+    "revision": "5d3fe5c8c733ed28a4bffe6807610aad",
     "url": "/finance-tracker/index.html"
   },
   {
-    "revision": "7804480e7977d43d9313",
+    "revision": "28fb3e2f395fd19f1a23",
     "url": "/finance-tracker/static/css/main.57c47c62.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/finance-tracker/static/js/2.6926162b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7804480e7977d43d9313",
-    "url": "/finance-tracker/static/js/main.5c86f7fd.chunk.js"
+    "revision": "28fb3e2f395fd19f1a23",
+    "url": "/finance-tracker/static/js/main.421e27f2.chunk.js"
   },
   {
     "revision": "8f5ea0f070dd480232c3",
