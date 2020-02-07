@@ -31,10 +31,16 @@ export default function TrackerAddTransaction(props) {
         }
         $(`[data-transaction-view="${e.value}"]`).fadeIn();
     }
-
+    function restartState() {
+        setForm({
+            incomeAmount: 0,
+            expense: "",
+            expenseAmount: 0
+        });
+    }
     function handleTransaction(e) {
         e.preventDefault();
-        const { incomeAmount, expense, expenseAmount } = form;
+        let { incomeAmount, expense, expenseAmount } = form;
         switch (transactionType) {
             case 'income' :
                 incomeAmount !== 0 ? 
@@ -45,8 +51,8 @@ export default function TrackerAddTransaction(props) {
                     icon: 'error',
                 });
                 break;
-            case 'amount' :
-                expense !== '' && expenseAmount !== 0 ? 
+            case 'expense' :
+                expense !== '' || expenseAmount !== 0 ? 
                 props.handleExpense(expense, expenseAmount)
                 : Swal.fire({
                     title: 'Error!',
@@ -62,6 +68,7 @@ export default function TrackerAddTransaction(props) {
                 });
                 break;
         }
+        restartState();
     }
 
     return (
