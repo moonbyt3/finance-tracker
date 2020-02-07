@@ -3,10 +3,19 @@ import $ from 'jquery';
 import Select from 'react-select';
 
 export default function TrackerAddTransaction(props) {
-    const [addTransactionAmount, setAddTransactionAmount] = useState(0);
     const [transactionType, setTransactionType] = useState('');
-    const [expense, setExpense] = useState('');
-    const [expenseAmount, setExpenseAmount] = useState(0);
+    const [form, setForm] = useState({
+        incomeAmount: 0,
+        expense: "",
+        expenseAmount: 0
+    });
+
+    const handleFormChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
     
     const options = [
         { value: 'expense', label: 'Add Expense' },
@@ -21,23 +30,14 @@ export default function TrackerAddTransaction(props) {
         }
         $(`[data-transaction-view="${e.value}"]`).fadeIn();
     }
+
     function handleTransaction(e) {
         e.preventDefault();
-        if (transactionType === 'income' ) {
-            props.handleIncome(addTransactionAmount);
+        if (transactionType === 'income') {
+            props.handleIncome(form.incomeAmount);
         } else {
-            props.handleDisplayExpense(expenseAmount);
-            props.handleHistoryExpense(expense, expenseAmount);
+            props.handleExpense(form.expense, form.expenseAmount);
         }
-    }
-    function bindTransactionAmountToState(e) {
-        setAddTransactionAmount(e.target.value);
-    }
-    function bindExpenseTextToState(e) {
-        setExpense(e.target.value);
-    }
-    function bindExpenseAmountToState(e) {
-        setExpenseAmount(e.target.value);
     }
 
     return (
@@ -53,17 +53,17 @@ export default function TrackerAddTransaction(props) {
                     <span>Text</span>
                     <input 
                         type="text"
-                        id="text"
-                        defaultValue={expense}
-                        onChange={bindExpenseTextToState}
+                        name="expense"
+                        value={form.expense}
+                        onChange={handleFormChange}
                         placeholder="Enter text..."
                     />
                     <span>Amount</span>
                     <input 
                         type="number"
-                        id="expenseAmount"
-                        defaultValue={expenseAmount}
-                        onChange={bindExpenseAmountToState}
+                        name="expenseAmount"
+                        value={form.expenseAmount}
+                        onChange={handleFormChange}
                         placeholder="Enter Amount..."
                     />
                 </div>
@@ -71,9 +71,9 @@ export default function TrackerAddTransaction(props) {
                     <span>Amount</span>
                     <input 
                         type="number" 
-                        id="incomeAmount" 
-                        defaultValue={addTransactionAmount} 
-                        onChange={bindTransactionAmountToState} 
+                        name="incomeAmount" 
+                        value={form.incomeAmount} 
+                        onChange={handleFormChange} 
                         placeholder="Enter amount..." 
                     />
                 </div>

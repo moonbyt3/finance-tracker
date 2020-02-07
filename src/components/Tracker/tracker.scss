@@ -63,9 +63,6 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    &:first-of-type {
-        display: none;
-    }
 }
 .tracker-history__list-item-btn {
     margin-right: 5px;

@@ -10,48 +10,43 @@ export default function Tracker() {
     const [income, setIncome] = useState(0);
     const [incomeDate, setIncomeDate] = useState('');
     const [expense, setExpense] = useState([]);
-    const [expenseAmount, setExpenseAmount] = useState(0);
 
     const handleIncome = (value) => {
         setIncome(Number(income) + Number(value));
         setIncomeDate(new Date().toLocaleDateString());
     }
 
-    const handleDisplayExpense = (value) => {
-        setExpenseAmount(Number(expenseAmount) + Number(value))
+    const handleExpense = (expenseName, expenseAmount) => {
+        setExpense([
+            ...expense,
+            [expenseName, expenseAmount]
+        ]);
     }
-    const pushExpense = (a,b) => {
-        let arr = [a,b];
-        return arr;
+
+    const calculateExpenseAmount = () => {
+        return expense.reduce((totalExpense, currentExpense) => {
+            return Number(totalExpense) + Number(currentExpense[1]);
+        }, 0);
     }
-    const handleHistoryExpense = (expenseName, epenseAmount) => {
-        setExpense(
-            pushExpense(expenseName, epenseAmount)
-        );
-    }
+
+    // TODO - Make function to calculate balance
+
     return (
         <div className="tracker">
             <TrackerDisplay 
                 income={income}
                 incomeDate={incomeDate}
-                expenseAmount={expenseAmount}
-            />
-            <TrackerHistory 
-                handleHistoryExpense={handleHistoryExpense}
-                expense={expense}
+                expenseAmount={calculateExpenseAmount()}
             />
 
-            {/* start
-                Inputs are binded to component state
-                User inputs transaction (expense/income)
-                On click it sets state of expense or income
-                
-            */}
+            <TrackerHistory 
+                expense={expense}
+            />
+            
             <TrackerAddTransaction 
                 income={income}
                 handleIncome={handleIncome}
-                handleDisplayExpense={handleDisplayExpense}
-                handleHistoryExpense={handleHistoryExpense}
+                handleExpense={handleExpense}
             />
         </div>
     )
