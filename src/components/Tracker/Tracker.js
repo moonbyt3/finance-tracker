@@ -30,31 +30,29 @@ export default function Tracker() {
         );
     }
     return (
-        <div className="container">
-            <div className="tracker">
-                <TrackerDisplay 
-                    income={income}
-                    incomeDate={incomeDate}
-                    expenseAmount={expenseAmount}
-                />
-                <TrackerHistory 
-                    handleHistoryExpense={handleHistoryExpense}
-                    expense={expense}
-                />
+        <div className="tracker">
+            <TrackerDisplay 
+                income={income}
+                incomeDate={incomeDate}
+                expenseAmount={expenseAmount}
+            />
+            <TrackerHistory 
+                handleHistoryExpense={handleHistoryExpense}
+                expense={expense}
+            />
 
-                {/* start
-                    Inputs are binded to component state
-                    User inputs transaction (expense/income)
-                    On click it sets state of expense or income
-                    
-                */}
-                <TrackerAddTransaction 
-                    income={income}
-                    handleIncome={handleIncome}
-                    handleDisplayExpense={handleDisplayExpense}
-                    handleHistoryExpense={handleHistoryExpense}
-                />
-            </div>
+            {/* start
+                Inputs are binded to component state
+                User inputs transaction (expense/income)
+                On click it sets state of expense or income
+                
+            */}
+            <TrackerAddTransaction 
+                income={income}
+                handleIncome={handleIncome}
+                handleDisplayExpense={handleDisplayExpense}
+                handleHistoryExpense={handleHistoryExpense}
+            />
         </div>
     )
 }

@@ -11,11 +11,11 @@ export default function TrackerDisplay({balance, income, expenseAmount, incomeDa
             <div className="tracker__display">
                 <div className="tracker__display-item">
                     <span className="tracker__display-item-title">Income <span className="tooltip" title={'Last entry: ' + incomeDate}><span>?</span></span></span>
-                    <p id="money-plus" className="money plus">${income}</p>
+                    <p id="money-plus" className="color-green">${income}</p>
                 </div>
                 <div className="tracker__display-item">
                     <span className="tracker__display-item-title">Expense</span>
-                    <p id="money-minus" className="money minus">${expenseAmount}</p>
+                    <p id="money-minus" className="color-red">${expenseAmount}</p>
                 </div>
             </div>
         </div>
