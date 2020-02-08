@@ -11,14 +11,12 @@ export default function Tracker() {
     const [incomeDate, setIncomeDate] = useState('');
     const [expense, setExpense] = useState([]);
     const [balance, setBalance] = useState(0);
-    useEffect(() => {
-        if (expense[0] != undefined) {
-            setBalance(Number(income) - Number(expense[0][1]));
-        }
-    }, [expense, income])
+   
+   
     const handleIncome = (value) => {
         setIncome(Number(income) + Number(value));
         setIncomeDate(new Date().toLocaleDateString());
+        setBalance(balance + Number(value));
     }
 
     const handleExpense = (expenseName, expenseAmount) => {
@@ -26,6 +24,7 @@ export default function Tracker() {
             ...expense,
             [expenseName, expenseAmount]
         ]);
+        setBalance(balance - Number(expenseAmount));
     }
 
     const calculateExpenseAmount = () => {
