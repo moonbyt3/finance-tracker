@@ -32,8 +32,10 @@ export default function Tracker() {
             return Number(totalExpense) + Number(currentExpense[1]);
         }, 0);
     }
-
-    // TODO - Make function to calculate balance
+    const handleDeleteHistoryItem = (historyItemAmount, historyItemIndex) => {
+        console.log('historyItemAmount', historyItemAmount);
+        console.log('historyItemIndex', historyItemIndex);
+    }
 
     return (
         <div className="tracker">
@@ -46,6 +48,7 @@ export default function Tracker() {
 
             <TrackerHistory 
                 expense={expense}
+                handleDeleteHistoryItem={handleDeleteHistoryItem}
             />
             
             <TrackerAddTransaction 
