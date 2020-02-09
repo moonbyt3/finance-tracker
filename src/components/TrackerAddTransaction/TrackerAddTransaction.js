@@ -52,7 +52,7 @@ export default function TrackerAddTransaction(props) {
                 });
                 break;
             case 'expense' :
-                expense !== '' || expenseAmount !== 0 ? 
+                expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' ?
                 props.handleExpense(expense, expenseAmount)
                 : Swal.fire({
                     title: 'Error!',
