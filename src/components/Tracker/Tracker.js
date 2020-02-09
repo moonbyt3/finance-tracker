@@ -16,7 +16,7 @@ export default function Tracker() {
         async function fetchData() {
             // You can await here
             const result = await axios(
-                'http://localhost:9999/api/finance-account',
+                'https://finance-tracker-srv.herokuapp.com/api/finance-account',
             );
             const { balance, income, income_date, expense } = result.data.results[0];
             setBalance(balance);
@@ -28,7 +28,7 @@ export default function Tracker() {
     }, []);
 
     const updateDB = () => {
-        axios.put('http://localhost:9999/api/finance-account/0', {
+        axios.put('https://finance-tracker-srv.herokuapp.com/api/finance-account/0', {
             _id: 0,
             name: 'admin',
             balance: balance,
