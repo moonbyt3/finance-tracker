@@ -37,6 +37,7 @@ export default function Tracker() {
         if (historyItemIndex !== -1) {
             tempExpensesList.splice(historyItemIndex, 1);
             setExpense(tempExpensesList);
+            setBalance(balance + historyItemAmount);
         }
     }
 
