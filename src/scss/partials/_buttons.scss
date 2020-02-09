@@ -1,16 +1,30 @@
 .btn {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 10px 25px;
+    background-color: $blue;
+    color: $white;
+    font-weight: bold;
     border: 2px solid $blue;
     text-transform: uppercase;
     transition: $dur $ease;
+    letter-spacing: .5px;
     &:hover {
+        cursor: pointer;
         color: $white;
-        background-color: $blue;
-        border: 2px solid $white;
+        background-color: darken($blue, 10%);
+        border: 2px solid $blue;
     }
     &:focus {
         outline: none;
+    }
+}
+.btn-green {
+    background-color: $green;
+    border: 2px solid $green;
+    color: $white;
+    &:hover {
+        background-color: darken($green, 10%);
+        border: 2px solid $green;
     }
 }
 .btn-delete {

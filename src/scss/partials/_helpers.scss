@@ -5,6 +5,10 @@ body {
         box-sizing: border-box;
     }
 }
+.centered {
+    display: block;
+    text-align: center;
+}
 .tooltip {
     position: relative;
     display: block;

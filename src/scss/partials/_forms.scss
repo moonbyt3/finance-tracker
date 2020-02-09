@@ -36,3 +36,11 @@
 .form-select {
     margin-bottom: 1em;
 }
+.form-btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-btn {
+    margin-bottom: 15px;
+}

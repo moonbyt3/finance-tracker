@@ -21,7 +21,7 @@ export default function TrackerHistory(props) {
                             <button className="tracker-history__list-item-btn btn-delete" name={i} amount={item[1]} title="Remove" onClick={removeTransaction}>x</button>
                         </li>
                     ))
-                    : []
+                    : <span className="centered">No data... <br /> Add your expense to track history</span>
                 }
                 
             </ul>

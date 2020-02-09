@@ -1,10 +1,11 @@
+@import '../../scss/base/variables';
 .tracker {
     max-width: 360px;
     margin: 0 auto;
-    padding: 0 30px;
-    border: 1px solid #afafaf;
+    padding: 20px 30px;
+    border: 1px solid $grey;
     border-radius: 3px;
-    background-color: white;
+    background-color: $white;
 }
 .tracker__title {
     display: block;
@@ -14,6 +15,24 @@
 .tracker__display {
     display: flex;
     flex: 1;
+}
+.tracker__display-title {
+    margin-bottom: 30px;
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $blue;
+    }
+}
+.tracker__display-title-text {
+    margin: 0;
+}
+.tracker__display-title-number {
+    margin: 0;
+    line-height: 1;
+    margin: 10px 0;
 }
 .tracker__display-item {
     position: relative;
@@ -31,7 +50,7 @@
         top: 0;
         height: 100%;
         width: 1px;
-        background-color: black;
+        background-color: lighten($grey, 20%);
     }
     &:last-of-type {
         &::after {
@@ -76,7 +95,8 @@
 }
 
 .tracker-add-trans {
-    padding: 50px 15px;
+    padding: 10px 15px;
+    
 }
 .tracker-add-trans__form-item {
     display: none;

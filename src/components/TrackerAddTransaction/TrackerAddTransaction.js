@@ -109,8 +109,10 @@ export default function TrackerAddTransaction(props) {
                         placeholder="Enter amount..." 
                     />
                 </div>
-                <button className="btn" onClick={handleTransaction}>Add transaction</button>
-                <button className="btn" onClick={props.updateDB}>updateDB</button>
+                <div className="form-btn-wrap">
+                    <button className="form-btn btn" onClick={handleTransaction}>Add transaction</button>
+                    <button className="form-btn btn btn-green" onClick={props.updateDB}>Save</button>
+                </div>
             </form>
         </div>
     )
