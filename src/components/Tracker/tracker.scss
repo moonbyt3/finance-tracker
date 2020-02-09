@@ -4,7 +4,7 @@
     margin: 0 auto;
     padding: 20px 30px;
     border: 1px solid $grey;
-    border-radius: 3px;
+    border-radius: 10px;
     background-color: $white;
 }
 .tracker__title {
@@ -95,7 +95,7 @@
 }
 
 .tracker-add-trans {
-    padding: 10px 15px;
+    padding: 10px 0;
     
 }
 .tracker-add-trans__form-item {
