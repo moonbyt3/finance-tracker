@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './tracker.scss';
 
 import TrackerDisplay from '../TrackerDisplay/TrackerDisplay';
@@ -12,7 +12,17 @@ export default function Tracker() {
     const [expense, setExpense] = useState([]);
     const [balance, setBalance] = useState(0);
    
-   
+    useEffect(() => {
+        async function fetchData() {
+            // You can await here
+            const result = await axios(
+                'http://localhost:9999/api/finance-account',
+            );
+            console.log(result.data);
+        }
+        fetchData();
+    }, []);
+
     const handleIncome = (value) => {
         setIncome(Number(income) + Number(value));
         setIncomeDate(new Date().toLocaleDateString());
