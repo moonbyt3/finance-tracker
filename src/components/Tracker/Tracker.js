@@ -18,10 +18,28 @@ export default function Tracker() {
             const result = await axios(
                 'http://localhost:9999/api/finance-account',
             );
-            console.log(result.data);
+            const { balance, income, income_date, expense } = result.data.results[0];
+            setBalance(balance);
+            setIncome(income);
+            setIncomeDate(income_date);
+            setExpense(expense);
         }
         fetchData();
     }, []);
+
+    const updateDB = () => {
+        axios.put('http://localhost:9999/api/finance-account/0', {
+            _id: 0,
+            name: 'admin',
+            balance: balance,
+            income: income,
+            income_date: incomeDate,
+            expense: expense
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 
     const handleIncome = (value) => {
         setIncome(Number(income) + Number(value));
@@ -69,6 +87,7 @@ export default function Tracker() {
                 income={income}
                 handleIncome={handleIncome}
                 handleExpense={handleExpense}
+                updateDB={updateDB}
             />
         </div>
     )

@@ -110,6 +110,7 @@ export default function TrackerAddTransaction(props) {
                     />
                 </div>
                 <button className="btn" onClick={handleTransaction}>Add transaction</button>
+                <button className="btn" onClick={props.updateDB}>updateDB</button>
             </form>
         </div>
     )
