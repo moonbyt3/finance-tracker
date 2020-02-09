@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './tracker.scss';
 
@@ -33,8 +33,11 @@ export default function Tracker() {
         }, 0);
     }
     const handleDeleteHistoryItem = (historyItemAmount, historyItemIndex) => {
-        console.log('historyItemAmount', historyItemAmount);
-        console.log('historyItemIndex', historyItemIndex);
+        let tempExpensesList = [... expense];
+        if (historyItemIndex !== -1) {
+            tempExpensesList.splice(historyItemIndex, 1);
+            setExpense(tempExpensesList);
+        }
     }
 
     return (

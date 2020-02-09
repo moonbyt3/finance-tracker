@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
+import $ from 'jquery';
 export default function TrackerHistory(props) {
     const {expense, handleDeleteHistoryItem} = props;
 
     function removeTransaction(e) {
-        let historyItemAmount = e.target.amount;
+        let historyItemAmount = $(e.target).attr('amount');
         let historyItemIndex = Number(e.target.name);
-        handleDeleteHistoryItem(historyItemAmount, historyItemIndex);
+        handleDeleteHistoryItem(Number(historyItemAmount), historyItemIndex);
     }
     return (
         <div className="tracker-history">
@@ -18,7 +18,7 @@ export default function TrackerHistory(props) {
                             <div className="tracker-history__list-item-text">
                                 {item[0]} <span>+{item[1]}$</span>
                             </div>
-                            <button className="tracker-history__list-item-btn btn-delete" name={i} amount={item[0]} title="Remove" onClick={removeTransaction}>x</button>
+                            <button className="tracker-history__list-item-btn btn-delete" name={i} amount={item[1]} title="Remove" onClick={removeTransaction}>x</button>
                         </li>
                     ))
                     : []
