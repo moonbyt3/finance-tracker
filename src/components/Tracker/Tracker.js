@@ -6,12 +6,12 @@ import TrackerDisplay from '../TrackerDisplay/TrackerDisplay';
 import TrackerHistory from '../TrackerHistory/TrackerHistory';
 import TrackerAddTransaction from '../TrackerAddTransaction/TrackerAddTransaction';
 
-export default function Tracker() {
+export default function Tracker(props) {
     const [income, setIncome] = useState(0);
     const [incomeDate, setIncomeDate] = useState('');
     const [expense, setExpense] = useState([]);
     const [balance, setBalance] = useState(0);
-   
+    
     useEffect(() => {
         async function fetchData() {
             // You can await here
@@ -35,7 +35,9 @@ export default function Tracker() {
             income: income,
             income_date: incomeDate,
             expense: expense
-          })
+          }, {headers: {
+            "Content-type": "application/json"
+        }})
           .catch(function (error) {
             console.log(error);
           });
@@ -61,7 +63,7 @@ export default function Tracker() {
         }, 0);
     }
     const handleDeleteHistoryItem = (historyItemAmount, historyItemIndex) => {
-        let tempExpensesList = [... expense];
+        let tempExpensesList = [...expense];
         if (historyItemIndex !== -1) {
             tempExpensesList.splice(historyItemIndex, 1);
             setExpense(tempExpensesList);

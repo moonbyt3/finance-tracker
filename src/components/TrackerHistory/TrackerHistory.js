@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import $ from 'jquery';
 export default function TrackerHistory(props) {
     const {expense, handleDeleteHistoryItem} = props;
