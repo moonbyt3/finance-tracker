@@ -5,6 +5,5 @@ Demo: https://moonbyt3.github.io/finance-tracker
 
 ## Install
 
-npm install
-npm run start
+npm install && npm run start
 
