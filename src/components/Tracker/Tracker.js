@@ -6,6 +6,9 @@ import TrackerDisplay from '../TrackerDisplay/TrackerDisplay';
 import TrackerHistory from '../TrackerHistory/TrackerHistory';
 import TrackerAddTransaction from '../TrackerAddTransaction/TrackerAddTransaction';
 
+//https://finance-tracker-srv.herokuapp.com/api/finance-account
+const apiURL = 'https://finance-tracker-srv.herokuapp.com/api/finance-account';
+
 export default function Tracker(props) {
     const [income, setIncome] = useState(0);
     const [incomeDate, setIncomeDate] = useState('');
@@ -16,7 +19,7 @@ export default function Tracker(props) {
         async function fetchData() {
             // You can await here
             const result = await axios(
-                'https://finance-tracker-srv.herokuapp.com/api/finance-account',
+                apiURL,
             );
             const { balance, income, income_date, expense } = result.data.results[0];
             setBalance(balance);
@@ -28,7 +31,7 @@ export default function Tracker(props) {
     }, []);
 
     const updateDB = () => {
-        axios.put('https://finance-tracker-srv.herokuapp.com/api/finance-account/0', {
+        axios.put(`${apiURL}/0`, {
             _id: 0,
             name: 'admin',
             balance: balance,
@@ -48,7 +51,11 @@ export default function Tracker(props) {
         setIncomeDate(new Date().toLocaleDateString());
         setBalance(balance + Number(value));
     }
-
+    const handleIncomeRemove = (value) => {
+        setIncome(Number(income) - Number(value));
+        setBalance(balance - Number(value));
+        
+    }
     const handleExpense = (expenseName, expenseAmount) => {
         setExpense([
             ...expense,
@@ -89,6 +96,7 @@ export default function Tracker(props) {
                 income={income}
                 handleIncome={handleIncome}
                 handleExpense={handleExpense}
+                handleIncomeRemove={handleIncomeRemove}
                 updateDB={updateDB}
             />
         </div>

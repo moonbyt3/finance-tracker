@@ -31,6 +31,6 @@ app.route("/api/:entity/:entityId/:related/:relatedId")
 
 
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 4000, function() {
     console.log("Server started");
 });

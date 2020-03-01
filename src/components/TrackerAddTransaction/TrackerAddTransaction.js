@@ -22,6 +22,7 @@ export default function TrackerAddTransaction(props) {
     const options = [
         { value: 'expense', label: 'Add Expense' },
         { value: 'income', label: 'Add Income' },
+        { value: 'incomeRemove', label: 'Remove Income'}
     ];
     
     function changeTransactionView(e) {
@@ -41,7 +42,7 @@ export default function TrackerAddTransaction(props) {
     }
     function handleTransaction(e) {
         e.preventDefault();
-        let { incomeAmount, expense, expenseAmount } = form;
+        let { incomeAmount, incomeRemove, expense, expenseAmount } = form;
         switch (transactionType) {
             case 'income' :
                 incomeAmount !== 0 ? 
@@ -55,6 +56,15 @@ export default function TrackerAddTransaction(props) {
             case 'expense' :
                 expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' ?
                 props.handleExpense(expense, expenseAmount)
+                : Swal.fire({
+                    title: 'Error!',
+                    text: 'Please fill all fields',
+                    icon: 'error',
+                });
+                break;
+            case 'incomeRemove' :
+                incomeRemove !== '' ?
+                props.handleIncomeRemove(incomeRemove)
                 : Swal.fire({
                     title: 'Error!',
                     text: 'Please fill all fields',
@@ -105,6 +115,16 @@ export default function TrackerAddTransaction(props) {
                         type="number" 
                         name="incomeAmount" 
                         value={form.incomeAmount} 
+                        onChange={handleFormChange} 
+                        placeholder="Enter amount..." 
+                    />
+                </div>
+                <div className="form-control tracker-add-trans__form-item" data-transaction-view="incomeRemove">
+                    <span>Amount</span>
+                    <input 
+                        type="number" 
+                        name="incomeRemove" 
+                        value={form.incomeRemove} 
                         onChange={handleFormChange} 
                         placeholder="Enter amount..." 
                     />
