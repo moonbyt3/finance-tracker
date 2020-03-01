@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/finance-tracker/static/css/main.bef38c1c.chunk.css",
-    "main.js": "/finance-tracker/static/js/main.cb2be195.chunk.js",
-    "main.js.map": "/finance-tracker/static/js/main.cb2be195.chunk.js.map",
+    "main.css": "/finance-tracker/static/css/main.ffbb5635.chunk.css",
+    "main.js": "/finance-tracker/static/js/main.1122e8c3.chunk.js",
+    "main.js.map": "/finance-tracker/static/js/main.1122e8c3.chunk.js.map",
     "runtime-main.js": "/finance-tracker/static/js/runtime-main.84f1941a.js",
     "runtime-main.js.map": "/finance-tracker/static/js/runtime-main.84f1941a.js.map",
     "static/js/2.78da5a14.chunk.js": "/finance-tracker/static/js/2.78da5a14.chunk.js",
     "static/js/2.78da5a14.chunk.js.map": "/finance-tracker/static/js/2.78da5a14.chunk.js.map",
     "index.html": "/finance-tracker/index.html",
-    "precache-manifest.fafa51d95162ebb91dc3936eb86a6c0d.js": "/finance-tracker/precache-manifest.fafa51d95162ebb91dc3936eb86a6c0d.js",
+    "precache-manifest.f9d98952fe5c13ee7373811b418ce822.js": "/finance-tracker/precache-manifest.f9d98952fe5c13ee7373811b418ce822.js",
     "service-worker.js": "/finance-tracker/service-worker.js",
-    "static/css/main.bef38c1c.chunk.css.map": "/finance-tracker/static/css/main.bef38c1c.chunk.css.map",
+    "static/css/main.ffbb5635.chunk.css.map": "/finance-tracker/static/css/main.ffbb5635.chunk.css.map",
     "static/js/2.78da5a14.chunk.js.LICENSE.txt": "/finance-tracker/static/js/2.78da5a14.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.84f1941a.js",
     "static/js/2.78da5a14.chunk.js",
-    "static/css/main.bef38c1c.chunk.css",
-    "static/js/main.cb2be195.chunk.js"
+    "static/css/main.ffbb5635.chunk.css",
+    "static/js/main.1122e8c3.chunk.js"
   ]
 }
