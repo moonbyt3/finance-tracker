@@ -1,1 +1,1 @@
-[{"_id":0,"name":"admin","balance":85,"income":90,"income_date":"3/1/2020","expense":[["Groceries","5"]]}]
+[{"_id":0,"name":"admin","balance":50,"income":90,"income_date":"3/1/2020","expense":[["Groceries","10","food"],["Electricity Bills","30","bills"]]}]

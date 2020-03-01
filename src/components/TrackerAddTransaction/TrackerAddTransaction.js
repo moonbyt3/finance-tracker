@@ -9,7 +9,8 @@ export default function TrackerAddTransaction(props) {
     const [form, setForm] = useState({
         incomeAmount: 0,
         expense: "",
-        expenseAmount: 0
+        expenseAmount: 0,
+        expenseType: ""
     });
     
     const handleFormChange = (e) => {
@@ -42,7 +43,7 @@ export default function TrackerAddTransaction(props) {
     }
     function handleTransaction(e) {
         e.preventDefault();
-        let { incomeAmount, incomeRemove, expense, expenseAmount } = form;
+        let { incomeAmount, incomeRemove, expense, expenseAmount, expenseType } = form;
         switch (transactionType) {
             case 'income' :
                 incomeAmount !== 0 ? 
@@ -54,8 +55,8 @@ export default function TrackerAddTransaction(props) {
                 });
                 break;
             case 'expense' :
-                expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' ?
-                props.handleExpense(expense, expenseAmount)
+                expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' && expenseType !== '' ?
+                props.handleExpense(expense, expenseAmount, expenseType)
                 : Swal.fire({
                     title: 'Error!',
                     text: 'Please fill all fields',
@@ -108,15 +109,23 @@ export default function TrackerAddTransaction(props) {
                         onChange={handleFormChange}
                         placeholder="Enter Amount..."
                     />
+                    <span>Type</span>
+                    <input 
+                        type="text"
+                        name="expenseType"
+                        value={form.expenseType}
+                        onChange={handleFormChange}
+                        placeholder="Enter type of expense..."
+                    />
                 </div>
                 <div className="form-control tracker-add-trans__form-item" data-transaction-view="income">
                     <span>Amount</span>
                     <input 
-                        type="number" 
-                        name="incomeAmount" 
-                        value={form.incomeAmount} 
-                        onChange={handleFormChange} 
-                        placeholder="Enter amount..." 
+                        type="number"
+                        name="incomeAmount"
+                        value={form.incomeAmount}
+                        onChange={handleFormChange}
+                        placeholder="Enter amount..."
                     />
                 </div>
                 <div className="form-control tracker-add-trans__form-item" data-transaction-view="incomeRemove">

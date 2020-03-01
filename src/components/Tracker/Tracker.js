@@ -5,9 +5,10 @@ import './tracker.scss';
 import TrackerDisplay from '../TrackerDisplay/TrackerDisplay';
 import TrackerHistory from '../TrackerHistory/TrackerHistory';
 import TrackerAddTransaction from '../TrackerAddTransaction/TrackerAddTransaction';
+import TrackerSummary from '../TrackerSummary/TrackerSummary';
 
 //https://finance-tracker-srv.herokuapp.com/api/finance-account
-const apiURL = 'https://finance-tracker-srv.herokuapp.com/api/finance-account';
+const apiURL = 'http://localhost:4000/api/finance-account';
 
 export default function Tracker(props) {
     const [income, setIncome] = useState(0);
@@ -56,10 +57,10 @@ export default function Tracker(props) {
         setBalance(balance - Number(value));
         
     }
-    const handleExpense = (expenseName, expenseAmount) => {
+    const handleExpense = (expenseName, expenseAmount, expenseType) => {
         setExpense([
             ...expense,
-            [expenseName, expenseAmount]
+            [expenseName, expenseAmount, expenseType.toLowerCase()]
         ]);
         setBalance(balance - Number(expenseAmount));
     }
@@ -80,25 +81,31 @@ export default function Tracker(props) {
 
     return (
         <div className="tracker">
-            <TrackerDisplay 
-                balance={balance}
-                income={income}
-                incomeDate={incomeDate}
-                expenseAmount={calculateExpenseAmount()}
-            />
+            <div className="tracker-panel"></div>
+            <div className="tracker-panel">
+                <TrackerDisplay 
+                    balance={balance}
+                    income={income}
+                    incomeDate={incomeDate}
+                    expenseAmount={calculateExpenseAmount()}
+                />
 
-            <TrackerHistory 
-                expense={expense}
-                handleDeleteHistoryItem={handleDeleteHistoryItem}
-            />
-            
-            <TrackerAddTransaction 
-                income={income}
-                handleIncome={handleIncome}
-                handleExpense={handleExpense}
-                handleIncomeRemove={handleIncomeRemove}
-                updateDB={updateDB}
-            />
+                <TrackerHistory 
+                    expense={expense}
+                    handleDeleteHistoryItem={handleDeleteHistoryItem}
+                />
+                
+                <TrackerAddTransaction 
+                    income={income}
+                    handleIncome={handleIncome}
+                    handleExpense={handleExpense}
+                    handleIncomeRemove={handleIncomeRemove}
+                    updateDB={updateDB}
+                />
+            </div>
+            <div className="tracker-panel">
+                <TrackerSummary />
+            </div>
         </div>
     )
 }
