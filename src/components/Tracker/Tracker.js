@@ -64,7 +64,10 @@ export default function Tracker(props) {
         ]);
         setBalance(balance - Number(expenseAmount));
     }
-
+    const handleSummary = () => {
+        console.log('wer');
+        
+    }
     const calculateExpenseAmount = () => {
         return expense.reduce((totalExpense, currentExpense) => {
             return Number(totalExpense) + Number(currentExpense[1]);
@@ -104,7 +107,7 @@ export default function Tracker(props) {
                 />
             </div>
             <div className="tracker-panel">
-                <TrackerSummary />
+                <TrackerSummary handleSummary={handleSummary}/>
             </div>
         </div>
     )
