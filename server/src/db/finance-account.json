@@ -1,1 +1,1 @@
-[{"_id":0,"name":"admin","balance":50,"income":90,"income_date":"3/1/2020","expense":[["Groceries","10","food"],["Electricity Bills","30","bills"]]}]
+[{"_id":0,"name":"admin","balance":30,"income":290,"income_date":"3/4/2020","expense":[["Groceries","10","food"],["Electricity","40","bills"],["Restaurant","10","food"],["Jeans","30","clothes"],["Red Sweater","15","clothes"],["Laptop Charger","25","electronics"],["Trip to Prague","130","travel"]]}]

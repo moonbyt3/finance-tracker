@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './tracker.scss';
+import _ from 'lodash';
 
 import TrackerDisplay from '../TrackerDisplay/TrackerDisplay';
 import TrackerHistory from '../TrackerHistory/TrackerHistory';
@@ -14,7 +15,20 @@ export default function Tracker(props) {
     const [income, setIncome] = useState(0);
     const [incomeDate, setIncomeDate] = useState('');
     const [expense, setExpense] = useState([]);
+    const [summary, setSummary] = useState([]);
     const [balance, setBalance] = useState(0);
+    const [expenseAmount, setExpenseAmount] = useState(0);
+    // 0
+    // ["Groceries", "10", "food"]
+
+    // 1
+    // ["Electricity Bills", "30", "bills"]
+
+    // 2
+    // ["Burger", "3", "food"]
+
+    // 3
+    // ["Weed", "10", "drugs"]
     
     useEffect(() => {
         async function fetchData() {
@@ -29,8 +43,41 @@ export default function Tracker(props) {
             setExpense(expense);
         }
         fetchData();
-    }, []);
 
+        
+        
+        // for (let i = 0; i < elements.length; i++) {
+        //     const element = elements[i];
+        //     if (element) {
+               
+        //     }
+        // }
+        // console.log(expenseTypes);
+        
+    }, []);
+    useEffect(() => {
+        let expenseTypes = expense.map((val, i, arr) => {
+            let expenseSingle = val;
+            let expenseSingleValue = val[1];
+            let expenseSingleType = val[2];
+            let res = {name: '', ammount: 0};
+            for (let j = 0; j < expense.length; j++) {
+                // console.log(expenseSingleType, expense[j][2]);
+                
+                if (expenseSingleType === expense[j][2]) {
+                    console.log(expenseSingleType);
+                    res.name = expenseSingleType;
+                    res.ammount += Number(expense[j][1]);
+                }
+            }
+            return res;
+            
+            
+        })
+        let summary = _.uniqWith(expenseTypes, _.isEqual);
+        setSummary(summary);
+        setExpenseAmount(calculateExpenseAmount());
+    }, [expense]);
     const updateDB = () => {
         axios.put(`${apiURL}/0`, {
             _id: 0,
@@ -63,10 +110,6 @@ export default function Tracker(props) {
             [expenseName, expenseAmount, expenseType.toLowerCase()]
         ]);
         setBalance(balance - Number(expenseAmount));
-    }
-    const handleSummary = () => {
-        console.log('wer');
-        
     }
     const calculateExpenseAmount = () => {
         return expense.reduce((totalExpense, currentExpense) => {
@@ -107,7 +150,10 @@ export default function Tracker(props) {
                 />
             </div>
             <div className="tracker-panel">
-                <TrackerSummary handleSummary={handleSummary}/>
+                <TrackerSummary
+                    summary={summary}
+                    totalExpenses={expenseAmount}
+                />
             </div>
         </div>
     )
