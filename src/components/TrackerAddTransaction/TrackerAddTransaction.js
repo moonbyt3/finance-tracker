@@ -38,7 +38,7 @@ export default function TrackerAddTransaction(props) {
         setForm({
             incomeAmount: 0,
             expense: "",
-            expenseAmount: 0
+            expenseType: 0
         });
     }
     function handleTransaction(e) {
