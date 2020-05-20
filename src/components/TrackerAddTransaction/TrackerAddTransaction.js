@@ -51,7 +51,7 @@ export default function TrackerAddTransaction(props) {
                     props.handleIncome(incomeAmount) 
                 : Swal.fire({
                     title: 'Error!',
-                    text: 'Ammount can\'t be 0',
+                    text: 'Amount can\'t be 0',
                     icon: 'error',
                 });
                 break;

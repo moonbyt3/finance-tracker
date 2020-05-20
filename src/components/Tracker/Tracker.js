@@ -42,14 +42,14 @@ export default function Tracker() {
             let expenseSingle = val;
             let expenseSingleValue = val[1];
             let expenseSingleType = val[2];
-            let res = {name: '', ammount: 0};
+            let res = {name: '', amount: 0};
             for (let j = 0; j < expense.length; j++) {
                 // console.log(expenseSingleType, expense[j][2]);
                 
                 if (expenseSingleType === expense[j][2]) {
                     console.log(expenseSingleType);
                     res.name = expenseSingleType;
-                    res.ammount += Number(expense[j][1]);
+                    res.amount += Number(expense[j][1]);
                 }
             }
             return res;
