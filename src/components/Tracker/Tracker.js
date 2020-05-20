@@ -9,7 +9,8 @@ import TrackerAddTransaction from '../TrackerAddTransaction/TrackerAddTransactio
 import TrackerSummary from '../TrackerSummary/TrackerSummary';
 
 //https://finance-tracker-srv.herokuapp.com/api/finance-account
-const apiURL = 'http://localhost:4000/api/finance-account';
+//https://moonbyt3-finance-tracker-api.glitch.me/api/finance-account
+const apiURL = 'https://moonbyt3-finance-tracker-api.glitch.me/api/finance-account';
 
 export default function Tracker() {
     const [income, setIncome] = useState(0);
