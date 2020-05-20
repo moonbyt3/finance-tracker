@@ -8,9 +8,9 @@ export default function TrackerAddTransaction(props) {
     const [transactionType, setTransactionType] = useState('');
     const [form, setForm] = useState({
         incomeAmount: 0,
-        expense: "",
+        expense: '',
         expenseAmount: 0,
-        expenseType: ""
+        expenseType: '',
     });
     
     const handleFormChange = (e) => {
@@ -37,8 +37,9 @@ export default function TrackerAddTransaction(props) {
     function restartState() {
         setForm({
             incomeAmount: 0,
-            expense: "",
-            expenseType: 0
+            expense: '',
+            expenseAmount: 0,
+            expenseType: '',
         });
     }
     function handleTransaction(e) {
