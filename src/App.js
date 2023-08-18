@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import './scss/main.scss';
-
 import About from './components/About/About';
 import Tracker from './components/Tracker/Tracker';
+
+import './scss/main.scss';
 
 function App() {
 	return (
