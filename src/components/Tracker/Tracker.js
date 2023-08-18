@@ -115,9 +115,6 @@ export default function Tracker() {
     return (
         <div className="tracker">
             <div className="tracker-panel">
-                {/* TODO */}
-            </div>
-            <div className="tracker-panel">
                 <TrackerDisplay 
                     balance={balance}
                     income={income}
