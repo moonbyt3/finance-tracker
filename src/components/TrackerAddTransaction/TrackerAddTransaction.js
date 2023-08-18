@@ -26,8 +26,8 @@ export default function TrackerAddTransaction(props) {
     ];
     
     function changeTransactionView(e) {
-        let views = document.querySelector('[data-transaction-view]');
-
+        let views = document.querySelectorAll('[data-transaction-view]');
+        console.log(views);
         for (let view of views) {
             view.classList.add('hide');
             setTransactionType(e.value);
