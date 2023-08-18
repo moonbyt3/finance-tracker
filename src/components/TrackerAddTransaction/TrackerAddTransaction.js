@@ -60,13 +60,24 @@ export default function TrackerAddTransaction(props) {
                 });
                 break;
             case 'expense' :
-                expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' && expenseType !== '' ?
-                props.handleExpense(expense, expenseAmount, expenseType)
-                : Swal.fire({
-                    title: 'Error!',
-                    text: 'Please fill all fields',
-                    icon: 'error',
-                });
+                if (expenseAmount < 0) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Expense can\'t be less than 0',
+                        icon: 'error',
+                    })
+                } else {
+                    expense !== '' || expenseAmount !== 0  && typeof expenseAmount != 'string' && expenseType !== '' ?
+                    props.handleExpense(expense, expenseAmount, expenseType)
+                    : Swal.fire({
+                        title: 'Error!',
+                        text: 'Please fill all fields',
+                        icon: 'error',
+                    });
+                }
+
+
+               
                 break;
             case 'incomeRemove' :
                 incomeRemove !== '' ?
@@ -86,6 +97,10 @@ export default function TrackerAddTransaction(props) {
                 break;
         }
         restartState();
+    }
+
+    function clearFormField(e) {
+        e.target.value = '';
     }
 
     return (
@@ -111,6 +126,7 @@ export default function TrackerAddTransaction(props) {
                         type="number"
                         name="expenseAmount"
                         value={form.expenseAmount}
+                        onClick={clearFormField}
                         onChange={handleFormChange}
                         placeholder="Enter Amount..."
                     />
