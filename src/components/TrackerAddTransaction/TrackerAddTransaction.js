@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import $ from 'jquery';
 import Swal from 'sweetalert2'
 import Select from 'react-select';
 
@@ -27,13 +26,17 @@ export default function TrackerAddTransaction(props) {
     ];
     
     function changeTransactionView(e) {
-        let views = $('[data-transaction-view]');
+        let views = document.querySelector('[data-transaction-view]');
+
         for (let view of views) {
-            $(view).hide();
+            view.classList.add('hide');
             setTransactionType(e.value);
         }
-        $(`[data-transaction-view="${e.value}"]`).fadeIn();
+
+        document.querySelector(`[data-transaction-view="${e.value}"]`).classList.remove('hide');
+        document.querySelector(`[data-transaction-view="${e.value}"]`).classList.add('show');
     }
+
     function restartState() {
         setForm({
             incomeAmount: 0,
@@ -42,6 +45,7 @@ export default function TrackerAddTransaction(props) {
             expenseType: '',
         });
     }
+
     function handleTransaction(e) {
         e.preventDefault();
         let { incomeAmount, incomeRemove, expense, expenseAmount, expenseType } = form;

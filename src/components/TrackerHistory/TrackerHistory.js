@@ -1,10 +1,9 @@
 import React from 'react';
-import $ from 'jquery';
 export default function TrackerHistory(props) {
     const {expense, handleDeleteHistoryItem} = props;
 
     function removeTransaction(e) {
-        let historyItemAmount = $(e.target).attr('amount');
+        let historyItemAmount = e.target.getAttribute('amount');
         let historyItemIndex = Number(e.target.name);
         handleDeleteHistoryItem(Number(historyItemAmount), historyItemIndex);
     }
